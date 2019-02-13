@@ -29,7 +29,7 @@ class Ftetopdf
     /**
      * @var array
      */
-    public $invoiceInfo = [];
+    protected $invoiceInfo = [];
 
     /**
      * @param string $filename
@@ -51,12 +51,18 @@ class Ftetopdf
         }
     }
 
+    /**
+     * @param string $filename
+     * @return array
+     */
     public function getInvoiceInfo(string $filename)
     {
-        $this->toPdf();
+        $this->toPdf($filename);
         $this->getInvoiceNumber();
         $this->getVat();
         $this->getSeller();
+
+        return $this->invoiceInfo;
     }
 
     /**
