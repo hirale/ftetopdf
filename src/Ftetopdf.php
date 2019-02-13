@@ -51,18 +51,21 @@ class Ftetopdf
         }
     }
 
+
     /**
      * @param string $filename
-     * @return array
+     * @return array|bool
      */
     public function getInvoiceInfo(string $filename)
     {
-        $this->toPdf($filename);
-        $this->getInvoiceNumber();
-        $this->getVat();
-        $this->getSeller();
+        if ($this->validateXML($filename)) {
+            $this->getInvoiceNumber();
+            $this->getVat();
+            $this->getSeller();
+            return $this->invoiceInfo;
+        }
+        return false;
 
-        return $this->invoiceInfo;
     }
 
     /**
@@ -76,7 +79,7 @@ class Ftetopdf
         } else {
             $sellerName = $xml->getElementsByTagName('Denominazione')[0]->nodeValue;
         }
-        array_push($this->invoiceInfo, ['seller', $sellerName]);
+        $this->invoiceInfo['Seller'] = $sellerName;
     }
 
     /**
@@ -86,7 +89,7 @@ class Ftetopdf
     {
         $xml = $this->xml;
         $vat = $xml->getElementsByTagName('IdCodice')[1]->nodeValue;
-        array_push($this->invoiceInfo, ['Vat', $vat]);
+        $this->invoiceInfo['Vat Code'] = $vat;
     }
 
     /**
@@ -97,7 +100,7 @@ class Ftetopdf
         $xml = $this->xml;
         $invoiceNumber = $xml->getElementsByTagName('Numero')[0]->nodeValue;
         $invoiceNumber = str_replace('/', "_", $invoiceNumber);
-        array_push($this->invoiceInfo, ['Vat', $invoiceNumber]);
+        $this->invoiceInfo['Invoice Number'] = $invoiceNumber;
     }
 
     /**
@@ -108,7 +111,6 @@ class Ftetopdf
     {
         $xml = new \DOMDocument();
         $xml->load($filename);
-        ini_set('display_errors', 0);
         if ($xml->schemaValidate(__DIR__ . '/assets/Schema_VFPR12.xsd')) {
             $this->xml = $xml;
             return true;
