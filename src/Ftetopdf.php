@@ -65,7 +65,6 @@ class Ftetopdf
             return $this->invoiceInfo;
         }
         return false;
-
     }
 
     /**
