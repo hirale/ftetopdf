@@ -1,0 +1,215 @@
+#fattura-elettronica {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1280px;
+    min-width: 930px;
+    padding: 0;
+}
+
+#fattura-elettronica
+div.page {
+}
+
+.tbHeader {
+    width: 800px;
+    border: 2px solid black;
+}
+
+
+tr td {
+    vertical-align: top;
+}
+
+.tdHead {
+    width: 50%;
+    height: 91px;
+    border: 1px solid black;
+}
+
+.tableHead {
+    font-size: smaller;
+    width: 100%;
+}
+
+.headBorder {
+<!-- border: 2 px solid black;
+width: 100 %;
+height: 210 px;
+border-bottom-left-radius: 30 px;
+border-bottom-right-radius: 30 px;
+-->
+}
+
+.headerLabel {
+    color: #282828;
+    font-weight: bold;
+
+
+}
+
+.headContent {
+    margin-left: 10px;
+    margin-bottom: 0px
+}
+
+.mt5 {
+    margin-top: 5px
+}
+
+
+tr.break {
+    page-break-after: always;
+}
+
+.ulAllegati {
+    margin-top: 0px;
+}
+
+
+.separa {
+    height: 20px;
+}
+
+table.tbTitolo {
+    width: 800px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    word-wrap: normal;
+<!-- break-word;
+-->
+}
+
+table.tbTitolo th {
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid #000000;
+    border-bottom: none;
+    background-color: LightCyan;
+    font-size: x-small;
+
+}
+
+
+table.tbFoglio {
+    width: 800px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    word-wrap: normal;
+<!-- break-word;
+-->
+}
+
+table.tbFoglio th {
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid #000000;
+    background-color: LightGrey;
+
+<!-- text-transform: uppercase;
+--> font-size: x-small;
+
+
+}
+
+/*table.tbFoglio tbody {*/
+    /*border: 10px solid #000000;*/
+/*}*/
+
+table.tbFoglio th .perc {
+    width: 50px;
+}
+
+table.tbFoglio td {
+    font-size: small;
+
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-left: 1px solid #000000;
+}
+
+table.tbFoglio tr {
+
+
+}
+
+.textRight {
+    text-align: right;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.textPerc {
+    width: 50px;
+}
+
+td.Ritenuta {
+    width: 50px;
+    text-align: center;
+}
+
+th.title, .title td {
+    width: 48%
+}
+
+th.perc {
+    width: 50px;
+}
+
+th.perc2 {
+    width: 40px;
+}
+
+th.data {
+    width: 100px;
+}
+
+th.import {
+    width: 100px;
+}
+
+td.import {
+    text-align: right;
+}
+
+th.import2 {
+    width: 80px;
+}
+
+td.import2 {
+    text-align: right;
+}
+
+th.ximport {
+    width: 100px;
+}
+
+td.ximport {
+    text-align: center;
+}
+
+th.ximport2 {
+    width: 80px;
+}
+
+td.ximport2 {
+    text-align: center;
+}
+
+td.data {
+    text-align: center;
+}
+
+.tx-xsmall {
+    font-size: x-small;
+}
+
+.tx-small {
+    font-size: small;
+}
+
+.import {
+    text-align: right;
+}

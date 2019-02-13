@@ -1,0 +1,20 @@
+{
+  "name": "alefix/ftetopdf",
+  "description": "Export electronic invoice to pdf",
+  "type": "library",
+  "require": {
+    "mpdf/mpdf": "^7.1"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alex",
+      "email": "info@alefix.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "alefix\\ftetopdf\\": "src/"
+    }
+  }
+}
