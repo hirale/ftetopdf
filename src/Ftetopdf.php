@@ -21,6 +21,8 @@ class Ftetopdf
      */
     protected $xml;
 
+    public $errors = [];
+
     /**
      * @param string $filename
      * @param string $xslStyle
@@ -37,7 +39,7 @@ class Ftetopdf
                 return $e;
             }
         } else {
-            echo 'Fattura ' . $filename . ' Non e\' Valida';
+            array_push($this->errors, 'Fattura ' . $filename . ' Non e\' Valida');
             return false;
         }
     }

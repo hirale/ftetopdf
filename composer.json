@@ -14,7 +14,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "alefix\\ftetopdf\\": "src/"
+      "Alefix\\Ftetopdf\\": "src/"
     }
   }
 }
