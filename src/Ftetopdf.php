@@ -21,7 +21,15 @@ class Ftetopdf
      */
     protected $xml;
 
+    /**
+     * @var array
+     */
     public $errors = [];
+
+    /**
+     * @var array
+     */
+    public $invoiceInfo = [];
 
     /**
      * @param string $filename
@@ -39,15 +47,22 @@ class Ftetopdf
                 return $e;
             }
         } else {
-            array_push($this->errors, 'Fattura ' . $filename . ' Non e\' Valida');
             return false;
         }
     }
 
+    public function getInvoiceInfo(string $filename)
+    {
+        $this->toPdf();
+        $this->getInvoiceNumber();
+        $this->getVat();
+        $this->getSeller();
+    }
+
     /**
-     * @return string
+     *
      */
-    public function getPdfName()
+    protected function getSeller()
     {
         $xml = $this->xml;
         if (isset($xml->getElementsByTagName('Cognome')[0]->nodeValue)) {
@@ -55,10 +70,28 @@ class Ftetopdf
         } else {
             $sellerName = $xml->getElementsByTagName('Denominazione')[0]->nodeValue;
         }
+        array_push($this->invoiceInfo, ['seller', $sellerName]);
+    }
+
+    /**
+     *
+     */
+    protected function getVat()
+    {
+        $xml = $this->xml;
+        $vat = $xml->getElementsByTagName('IdCodice')[1]->nodeValue;
+        array_push($this->invoiceInfo, ['Vat', $vat]);
+    }
+
+    /**
+     *
+     */
+    protected function getInvoiceNumber()
+    {
+        $xml = $this->xml;
         $invoiceNumber = $xml->getElementsByTagName('Numero')[0]->nodeValue;
         $invoiceNumber = str_replace('/', "_", $invoiceNumber);
-        $pdfName = $sellerName . '_' . $invoiceNumber . '.pdf';
-        return $pdfName;
+        array_push($this->invoiceInfo, ['Vat', $invoiceNumber]);
     }
 
     /**
@@ -74,6 +107,7 @@ class Ftetopdf
             $this->xml = $xml;
             return true;
         } else {
+            array_push($this->errors, 'Fattura ' . $filename . ' Non e\' Valida');
             return false;
         }
     }
