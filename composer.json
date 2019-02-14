@@ -3,6 +3,9 @@
   "description": "Export electronic invoice to pdf",
   "type": "library",
   "require": {
+    "php": ">=7.0.0",
+    "ext-dom": "*",
+    "ext-xsl": "*",
     "mpdf/mpdf": "^7.1"
   },
   "license": "MIT",

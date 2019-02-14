@@ -77,6 +77,7 @@ class Ftetopdf
         } else {
             $sellerName = $xml->getElementsByTagName('Denominazione')[0]->nodeValue;
         }
+        $sellerName = str_replace(' ', '_', $sellerName);
         $this->invoiceInfo['Seller'] = $sellerName;
     }
 
@@ -97,7 +98,7 @@ class Ftetopdf
     {
         $xml = $this->xml;
         $invoiceNumber = $xml->getElementsByTagName('Numero')[0]->nodeValue;
-        $invoiceNumber = str_replace('/', "_", $invoiceNumber);
+        $invoiceNumber = str_replace('/', '_', $invoiceNumber);
         $this->invoiceInfo['Invoice Number'] = $invoiceNumber;
     }
 
