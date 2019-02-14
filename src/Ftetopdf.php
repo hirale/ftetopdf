@@ -29,6 +29,7 @@ namespace Alefix;
 use Mpdf\HTMLParserMode;
 use Mpdf\Mpdf;
 use Mpdf\Output\Destination;
+use Mpdf\Tag\S;
 
 /**
  * Class Ftetopdf
@@ -55,18 +56,20 @@ class Ftetopdf
      */
     protected $invoiceInfo = [];
 
+
     /**
      * @param string $filename
+     * @param string $format    Mpdf Output Format, default is string
      * @param string $xslStyle
      * @param string $cssStyle
-     * @return \Exception|string
+     * @return bool|\Exception|string
      */
-    public function toPdf(string $filename, string $xslStyle = __DIR__ . '/assets/style.xsl', string $cssStyle = __DIR__ . '/assets/style.css')
+    public function toPdf(string $filename, string $format = 'Destination::STRING_RETURN', string $xslStyle = __DIR__ . '/assets/style.xsl', string $cssStyle = __DIR__ . '/assets/style.css')
     {
         if ($this->validateXML($filename)) {
             $this->toHtml($xslStyle);
             try {
-                return $this->toMpdf($cssStyle);
+                return $this->toMpdf($cssStyle, $format);
             } catch (\Exception $e) {
                 return $e;
             }
@@ -161,12 +164,12 @@ class Ftetopdf
      * @return string
      * @throws \Mpdf\MpdfException
      */
-    protected function toMpdf(string $style)
+    protected function toMpdf(string $style, string $format = 'Destination::STRING_RETURN')
     {
         $pdf = new Mpdf();
         $style = file_get_contents($style);
         $pdf->WriteHTML($style, HTMLParserMode::HEADER_CSS);
         $pdf->WriteHTML($this->html, HTMLParserMode::HTML_BODY);
-        return $pdf->Output('', Destination::STRING_RETURN);
+        return $pdf->Output('', $format);
     }
 }

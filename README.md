@@ -32,7 +32,14 @@ $pdf->validateXML($file);
 $invoiceInfo = $pdf->getInvoiceInfo($file);
 $filename = $invoiceInfo['Seller'] . '_' . $invoiceInfo['Invoice Number'] . '.pdf';
 
-// topdf() return string of generated pdf.
+/**
+ * topdf() has 4 params
+ * @param string $filename
+ * @param string $format    Mpdf output format, default is string, check mpdf output() for details
+ * @param string $xslStyle
+ * @param string $cssStyle
+ * @return bool|\Exception|string
+*/
 file_put_contents($filename, $pdf->toPdf($file));
 
 ?>
