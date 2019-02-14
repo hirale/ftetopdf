@@ -64,7 +64,7 @@ class Ftetopdf
      * @param string $cssStyle
      * @return bool|\Exception|string
      */
-    public function toPdf(string $filename, string $format = 'Destination::STRING_RETURN', string $xslStyle = __DIR__ . '/assets/style.xsl', string $cssStyle = __DIR__ . '/assets/style.css')
+    public function toPdf(string $filename, string $format = 'S', string $xslStyle = __DIR__ . '/assets/style.xsl', string $cssStyle = __DIR__ . '/assets/style.css')
     {
         if ($this->validateXML($filename)) {
             $this->toHtml($xslStyle);
