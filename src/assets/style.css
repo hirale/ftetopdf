@@ -7,8 +7,7 @@
     padding: 0;
 }
 
-#fattura-elettronica
-div.page {
+#fattura-elettronica div.page {
 }
 
 .tbHeader {
@@ -33,24 +32,21 @@ tr td {
 }
 
 .headBorder {
-<!-- border: 2 px solid black;
-width: 100 %;
-height: 210 px;
-border-bottom-left-radius: 30 px;
-border-bottom-right-radius: 30 px;
--->
+    border: 2px solid black;
+    width: 100%;
+    height: 210px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
 
 .headerLabel {
     color: #282828;
     font-weight: bold;
-
-
 }
 
 .headContent {
     margin-left: 10px;
-    margin-bottom: 0px
+    margin-bottom: 0
 }
 
 .mt5 {
@@ -63,7 +59,7 @@ tr.break {
 }
 
 .ulAllegati {
-    margin-top: 0px;
+    margin-top: 0
 }
 
 
@@ -76,8 +72,7 @@ table.tbTitolo {
     table-layout: fixed;
     border-collapse: collapse;
     word-wrap: normal;
-<!-- break-word;
--->
+    /*break-word;*/
 }
 
 table.tbTitolo th {
@@ -87,17 +82,15 @@ table.tbTitolo th {
     border-bottom: none;
     background-color: LightCyan;
     font-size: x-small;
-
 }
-
 
 table.tbFoglio {
     width: 800px;
     table-layout: fixed;
     border-collapse: collapse;
     word-wrap: normal;
-<!-- break-word;
--->
+    /*break-word;*/
+
 }
 
 table.tbFoglio th {
@@ -106,14 +99,12 @@ table.tbFoglio th {
     border: 1px solid #000000;
     background-color: LightGrey;
 
-<!-- text-transform: uppercase;
---> font-size: x-small;
-
-
+    text-transform: uppercase;
+    font-size: x-small;
 }
 
 /*table.tbFoglio tbody {*/
-    /*border: 10px solid #000000;*/
+/*border: 10px solid #000000;*/
 /*}*/
 
 table.tbFoglio th .perc {

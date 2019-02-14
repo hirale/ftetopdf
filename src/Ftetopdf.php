@@ -46,9 +46,8 @@ class Ftetopdf
             } catch (\Exception $e) {
                 return $e;
             }
-        } else {
-            return false;
         }
+        return false;
     }
 
 
@@ -113,10 +112,9 @@ class Ftetopdf
         if ($xml->schemaValidate(__DIR__ . '/assets/Schema_VFPR12.xsd')) {
             $this->xml = $xml;
             return true;
-        } else {
-            array_push($this->errors, 'Fattura ' . $filename . ' Non e\' Valida');
-            return false;
         }
+        array_push($this->errors, 'Fattura ' . $filename . ' Non e\' Valida');
+        return false;
     }
 
     /**
@@ -141,7 +139,8 @@ class Ftetopdf
     protected function toMpdf(string $style)
     {
         $pdf = new Mpdf();
-        $pdf->WriteHTML(file_get_contents($style), HTMLParserMode::HEADER_CSS);
+        $style = file_get_contents($style);
+        $pdf->WriteHTML($style, HTMLParserMode::HEADER_CSS);
         $pdf->WriteHTML($this->html, HTMLParserMode::HTML_BODY);
         return $pdf->Output('', Destination::STRING_RETURN);
     }
