@@ -1,0 +1,6 @@
+Mpdf\MpdfException: Incorrect output destination DESTINATION::STRING_RETURN in /usr/share/nginx/html/test/vendor/mpdf/mpdf/src/Mpdf.php:9481
+Stack trace:
+#0 /usr/share/nginx/html/test/vendor/alefix/ftetopdf/src/Ftetopdf.php(173): Mpdf\Mpdf->Output('', 'DESTINATION::ST...')
+#1 /usr/share/nginx/html/test/vendor/alefix/ftetopdf/src/Ftetopdf.php(72): Alefix\Ftetopdf->toMpdf('#fattura-elettr...', 'Destination::ST...')
+#2 /usr/share/nginx/html/test/index.php(11): Alefix\Ftetopdf->toPdf('IT01234567890_F...')
+#3 {main}
