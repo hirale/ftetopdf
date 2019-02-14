@@ -48,6 +48,7 @@ file_put_contents($filename, $pdf->toPdf($file));
 #### Example file
 - index.php
 - IT01234567890_FPA02.xml
+- ALPHA_SRL_123.pdf
 
 
 ## Contributing
