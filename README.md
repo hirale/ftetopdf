@@ -25,6 +25,9 @@ $file = 'IT01234567890_FPA02.xml';
 
 $pdf = new Ftetopdf();
 
+//validate if it's a valid invoice xml, return bool and push error to array $pdf->errors
+$pdf->validateXML($file);
+
 // getInvoiceInfo() will return an array, and return 'Seller','Invoice Number','Vat Number'
 $invoiceInfo = $pdf->getInvoiceInfo($file);
 $filename = $invoiceInfo['Seller'] . '_' . $invoiceInfo['Invoice Number'] . '.pdf';
@@ -33,14 +36,6 @@ $filename = $invoiceInfo['Seller'] . '_' . $invoiceInfo['Invoice Number'] . '.pd
 file_put_contents($filename, $pdf->toPdf($file));
 
 ?>
-```
-
-If file xml is not a valid invoice xml, it will push the error to errors array(default is empty), you can detect errors like this
-```php
-if (empty($pdf->errors))
-{
-    //code here.
-}
 
 ```
 #### Example file

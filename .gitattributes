@@ -1,5 +1,6 @@
 /.gitattributes export-ignore
 /.gitignore export-ignore
-/index.php
-/IT01234567890_FPA02.xml
-/ALPHA SRL_123.pdf
+/index.php export-ignore
+/IT01234567890_FPA02.xml export-ignore
+/*.pdf export-ignore
+/composer.lock export-ignore

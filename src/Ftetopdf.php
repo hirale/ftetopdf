@@ -1,4 +1,28 @@
 <?php
+/**
+ * MIT License
+ *
+ * Copyright (c) 2019 Alefix
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
 
 namespace Alefix;
 
@@ -67,6 +91,22 @@ class Ftetopdf
     }
 
     /**
+     * @param $filename
+     * @return bool
+     */
+    public function validateXML($filename)
+    {
+        $xml = new \DOMDocument();
+        $xml->load($filename);
+        if ($xml->schemaValidate(__DIR__ . '/assets/Schema_VFPR12.xsd')) {
+            $this->xml = $xml;
+            return true;
+        }
+        array_push($this->errors, 'Fattura ' . $filename . ' Non e\' Valida');
+        return false;
+    }
+
+    /**
      *
      */
     protected function getSeller()
@@ -100,22 +140,6 @@ class Ftetopdf
         $invoiceNumber = $xml->getElementsByTagName('Numero')[0]->nodeValue;
         $invoiceNumber = str_replace('/', '_', $invoiceNumber);
         $this->invoiceInfo['Invoice Number'] = $invoiceNumber;
-    }
-
-    /**
-     * @param $filename
-     * @return bool
-     */
-    protected function validateXML($filename)
-    {
-        $xml = new \DOMDocument();
-        $xml->load($filename);
-        if ($xml->schemaValidate(__DIR__ . '/assets/Schema_VFPR12.xsd')) {
-            $this->xml = $xml;
-            return true;
-        }
-        array_push($this->errors, 'Fattura ' . $filename . ' Non e\' Valida');
-        return false;
     }
 
     /**
